@@ -63,7 +63,7 @@ export default function OtherPlayersGuess({
           handleSubmit={handleSubmit} />
         <Container className="text-center">
           <h3>The storyteller submitted the descriptor "{storyDescriptor}"</h3>
-          <h5>Guess which card is the storyteller's!</h5>
+          <h5>Here are the cards other players submitted. Guess which card is the storyteller's!</h5>
           <Hand hand={otherCards} selectedCard={selectedCard} setSelectedCard={setSelectedCard} />
         </Container>
       </>
