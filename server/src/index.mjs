@@ -6,12 +6,13 @@ import { Server } from 'socket.io';
 import cors from "cors";
 
 
-const PORT = process.env.PORT || 3000;
-
 const app = express();
 app.use(express.json());
 app.use(cors());
 const server = createServer(app);
+// to wok with Azure
+app.set('port', process.env.PORT || 8000);
+app.use(express.static('../../client/build'));
 const io = new Server(server, {
   cors: {
     origin: "*",
@@ -200,7 +201,7 @@ io.on('connection', socket => {
 
 });
 
-
+app.get()
 
 // allows users to get the card info for a card
 app.get('/cardinfo/:cardId', (req, res) => {
@@ -231,7 +232,11 @@ app.post('/createroom', (req, res) => {
   res.status(201).send({ newRoomCode });
 });
 
+// serves react app
+app.get("*", (req, res) => {
+  res.sendFile("../../client/build/index.html");
+})
 
 server.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}...`);
+  console.log(`Server listening on port ${app.get('port')}...`);
 });
