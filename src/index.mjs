@@ -12,7 +12,7 @@ app.use(cors());
 const server = createServer(app);
 // to wok with Azure
 app.set('port', process.env.PORT || 8000);
-app.use(express.static('../../client/build'));
+app.use(express.static('../client/build'));
 const io = new Server(server, {
   cors: {
     origin: "*",
@@ -234,7 +234,7 @@ app.post('/createroom', (req, res) => {
 
 // serves react app
 app.get("*", (req, res) => {
-  res.sendFile("../../client/build/index.html");
+  res.sendFile("../client/build/index.html");
 })
 
 server.listen(PORT, () => {
