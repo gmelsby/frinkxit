@@ -16,15 +16,13 @@ export default function About() {
       </a>
       &nbsp;as cards.
     </p>
-    <p>
-      <p>Screencaps, episode information, and subtitles were obtained via&nbsp;
-        <a href="https://frinkiac.com/"
-          target="_blank"
-          rel="noopener noreferrer">
-          Frinkiac&apos;s
-        </a>
-        &nbsp;API.
-      </p>
+    <p>Screencaps, episode information, and subtitles were obtained via&nbsp;
+      <a href="https://frinkiac.com/"
+        target="_blank"
+        rel="noopener noreferrer">
+        Frinkiac&apos;s
+      </a>
+      &nbsp;API.
     </p>
     <p>
       There are over 20,000 possible cards, and each card added to a game is randomly chosen with measures taken to avoid duplicates.
