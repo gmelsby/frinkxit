@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import ButtonTimer from '../components/ButtonTimer';
 import Sidebar from '../components/Sidebar';
 import JustifySafelyContainer from '../components/JustifySafelyContainer';
+import { DonutScene } from '../components/Donut';
 
 
 export default function HomePage({ userId }: { userId: string }) {
@@ -66,6 +67,7 @@ export default function HomePage({ userId }: { userId: string }) {
           <h4>A Mashup of <em>The Simpsons</em> and <em>Dixit</em></h4>
 
         </Row>
+        <DonutScene />
         <Row className='justify-content-center'>
           <Row>
             <h5>To play, create a room or join an existing room.</h5>

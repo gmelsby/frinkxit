@@ -4,6 +4,7 @@ import './App.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import useSessionStorage from './hooks/useSessionStorage';
 import HomePage from './pages/HomePage';
+import { DonutScene } from './components/Donut';
 const RoomPage = lazy(() => import('./pages/RoomPage'));
 const FourOhFour = lazy(() => import('./pages/FourOhFour'));
 
@@ -24,18 +25,19 @@ function App() {
   }, [userId, generateUuid]);
 
   return (
-    <React.Suspense fallback={<></>}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage userId={userId} />} />
-          <Route path="/room">
-            <Route path=":roomId" element={<RoomPage userId={userId} />} />
-            <Route path="/room" element={<FourOhFour />} />
-          </Route>
-          <Route path="*" element={<FourOhFour />} />
-        </Routes>
-      </BrowserRouter>
-    </React.Suspense>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage userId={userId} />} />
+        <Route path="/room">
+          <Route path=":roomId" element={
+            <React.Suspense fallback={<DonutScene />}>
+              <RoomPage userId={userId} />
+            </React.Suspense>} />
+          <Route path="/room" element={<FourOhFour />} />
+        </Route>
+        <Route path="*" element={<FourOhFour />} />
+      </Routes>
+    </BrowserRouter >
   );
 }
 
