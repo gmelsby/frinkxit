@@ -10,7 +10,7 @@ Source: https://sketchfab.com/3d-models/glazed-donut-simple-model-0bc473ee934f44
 Title: Glazed donut_simple model
 */
 
-import { useGLTF } from '@react-three/drei';
+import { OrbitControls, useGLTF } from '@react-three/drei';
 import React, { useRef } from 'react';
 
 useGLTF.preload('/glft/donut/scene.gltf');
@@ -23,7 +23,7 @@ export function Donut({ animationCallback }: { animationCallback: (referenceGrou
 
   return (
     <group ref={groupRef}>
-      <group scale={2} position={[0, 0, 0.1]} rotation={[Math.PI, 0, 0]}>
+      <group scale={2} position={[-0.006, -0.041, -0.006]} rotation={[2 * Math.PI / 3, 0, 0]}>
         <mesh
           castShadow
           receiveShadow
@@ -91,26 +91,55 @@ export function Donut({ animationCallback }: { animationCallback: (referenceGrou
 
 export function DonutScene() {
 
+  const cameraPosition = new THREE.Vector3(0, 0, 4);
+  // Light positions are relative to camera
+  const light1 = useRef<THREE.PointLight>(null);
+  const light1Position = new THREE.Vector3(2, 2, 3);
+  const light2 = useRef<THREE.PointLight>(null);
+  const light2Position = new THREE.Vector3(-2, -1, 3);
+  const light3 = useRef<THREE.PointLight>(null);
+  const light3Position = new THREE.Vector3(0, 4, 5);
+
   function animationCallback(donutRef: React.RefObject<THREE.Group | null>): RenderCallback {
     return (_, delta) => {
       if (donutRef.current) {
-        donutRef.current.rotateY(delta);
+        donutRef.current.rotateY(- 1 * delta / 3);
+        donutRef.current.rotateZ(-1 * delta / 4);
       }
     };
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full -z-10">
+    <div className="z-10">
       <Canvas
         camera={{
-          position: [0, 0, 5],
+          position: cameraPosition,
           fov: 75,
           near: 0.1,
           far: 1000,
         }}
       >
-        <ambientLight intensity={0.9} />
+        <ambientLight intensity={.5} />
+        <pointLight intensity={10} ref={light1} position={cameraPosition.clone().add(light1Position)} />
+        <pointLight intensity={15} ref={light2} position={cameraPosition.clone().add(light2Position)} />
+        <pointLight intensity={7} ref={light3} position={cameraPosition.clone().add(light3Position)} />
         <Donut animationCallback={animationCallback} />
+        <OrbitControls enablePan={false} enableZoom={false}
+          onChange={(e) => {
+            if (!e || !e.target) return;
+            const camera = e.target.object;
+            const newPosition = camera.position;
+            if (light1.current) {
+              light1.current.position.copy(newPosition.clone().add(light1Position));
+            }
+            if (light2.current) {
+              light2.current.position.copy(newPosition.clone().add(light2Position));
+            }
+            if (light3.current) {
+              light3.current.position.copy(newPosition.clone().add(light3Position));
+            }
+
+          }} />
       </Canvas>
     </div>
   );
