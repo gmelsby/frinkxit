@@ -1,0 +1,11 @@
+Model Information:
+* title:	Glazed donut_simple model
+* source:	https://sketchfab.com/3d-models/glazed-donut-simple-model-0bc473ee934f44c6bd124717cdf58c93
+* author:	JoelHdez (https://sketchfab.com/JoelHdez)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Glazed donut_simple model" (https://sketchfab.com/3d-models/glazed-donut-simple-model-0bc473ee934f44c6bd124717cdf58c93) by JoelHdez (https://sketchfab.com/JoelHdez) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
