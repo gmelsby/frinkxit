@@ -23,7 +23,7 @@ export function Donut({ animationCallback }: { animationCallback: (referenceGrou
 
   return (
     <group ref={groupRef}>
-      <group position={[-0.006, -0.041, -0.006]} rotation={[Math.PI / 2, 0, -Math.PI / 2]}>
+      <group scale={2} position={[0, 0, 0.1]} rotation={[Math.PI, 0, 0]}>
         <mesh
           castShadow
           receiveShadow
@@ -94,7 +94,7 @@ export function DonutScene() {
   function animationCallback(donutRef: React.RefObject<THREE.Group | null>): RenderCallback {
     return (_, delta) => {
       if (donutRef.current) {
-        donutRef.current.rotateX(delta);
+        donutRef.current.rotateY(delta);
       }
     };
   }
@@ -103,13 +103,13 @@ export function DonutScene() {
     <div className="fixed top-0 left-0 w-full h-full -z-10">
       <Canvas
         camera={{
-          position: [0, 0, 20],
+          position: [0, 0, 5],
           fov: 75,
           near: 0.1,
           far: 1000,
         }}
       >
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={0.9} />
         <Donut animationCallback={animationCallback} />
       </Canvas>
     </div>
