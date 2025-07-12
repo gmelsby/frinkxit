@@ -4,7 +4,7 @@ import './App.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import useSessionStorage from './hooks/useSessionStorage';
 import HomePage from './pages/HomePage';
-import { DonutScene } from './components/Donut';
+import SpinnerMessage from './components/SpinnerMessage';
 const RoomPage = lazy(() => import('./pages/RoomPage'));
 const FourOhFour = lazy(() => import('./pages/FourOhFour'));
 
@@ -30,12 +30,20 @@ function App() {
         <Route path="/" element={<HomePage userId={userId} />} />
         <Route path="/room">
           <Route path=":roomId" element={
-            <React.Suspense fallback={<DonutScene />}>
+            <React.Suspense fallback={<SpinnerMessage message="Joining room..." />}>
               <RoomPage userId={userId} />
             </React.Suspense>} />
-          <Route path="/room" element={<FourOhFour />} />
+          <Route path="/room" element={
+            <React.Suspense fallback={<></>}>
+              <FourOhFour />
+            </React.Suspense>
+          } />
         </Route>
-        <Route path="*" element={<FourOhFour />} />
+        <Route path="*" element={
+          <React.Suspense fallback={<></>}>
+            <FourOhFour />
+          </React.Suspense>
+        } />
       </Routes>
     </BrowserRouter >
   );

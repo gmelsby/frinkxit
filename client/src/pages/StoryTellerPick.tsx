@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Spinner } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import Hand from '../components/Hand';
 import StoryModal from '../components/StoryModal';
 import { GameCard, Player } from '../../../types';
 import { Socket } from 'socket.io-client';
 import JustifySafelyContainer from '../components/JustifySafelyContainer';
+import SpinnerMessage from '../components/SpinnerMessage';
 
 export default function StoryTellerPick({
   userId,
@@ -39,10 +40,7 @@ export default function StoryTellerPick({
 
     if (storyTeller.hand.length < handSize) {
       return (
-        <Container className="d-flex flex-column justify-content-center-safe text-center pt-5 h-75">
-          <h1>Drawing cards...</h1>
-          <Spinner className="mx-auto mt-5" animation="border" variant="primary" />
-        </Container>
+        <SpinnerMessage message='Drawing cards...' />
       );
     }
 
