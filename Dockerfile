@@ -1,4 +1,4 @@
-FROM node:23.4.0-bookworm-slim AS build
+FROM node:25-bookworm-slim AS build
 RUN apt-get update -y && apt-get install -y openssl
 WORKDIR /usr/src/app
 COPY package*.json ./
@@ -14,7 +14,7 @@ WORKDIR /usr/src/app/client
 RUN npm ci
 RUN npm run build
 
-FROM node:23.4.0-bookworm-slim
+FROM node:25-bookworm-slim
 RUN apt-get update -y && apt-get install -y openssl wget curl
 WORKDIR /usr/src/app
 COPY package*.json ./
