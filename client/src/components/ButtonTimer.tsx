@@ -41,6 +41,7 @@ export default function ButtonTimer(props: TimerButtonProps) {
 
   if (recentlyClicked) {
     return (
+      // @ts-expect-error Bootstrap Button props are too complex of a union type
       <Button {...buttonProps}>
         <Spinner as="span" animation="border" size="sm" />
         {' ' + children}
