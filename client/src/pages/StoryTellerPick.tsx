@@ -51,7 +51,7 @@ export default function StoryTellerPick({
         <JustifySafelyContainer justifyType='evenly' className="d-flex flex-column text-center align-items-center h-100 m-auto">
           <Row className='my-2'>
             <h1>You are the storyteller!</h1>
-            <h2>Pick an image and come up with a description.</h2>
+            <h2>Pick a card and enter a clue.</h2>
           </Row>
           <Row className='mb-2'>
             <Hand hand={storyTeller.hand} setSelectedCard={setSelectedCard} />

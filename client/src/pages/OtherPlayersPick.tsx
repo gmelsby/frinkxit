@@ -74,7 +74,7 @@ export default function OtherPlayersPick({
 
       <JustifySafelyContainer justifyType='evenly' className="h-100 d-flex flex-column text-center">
         <Container className="mt-5 mt-md-0">
-          <h2>The storyteller submitted the descriptor</h2>
+          <h2>The storyteller submitted the clue</h2>
           <h1><b>{storyDescriptor}</b></h1>
           <h5>Pick a {players.length === 3 && expectedCards - playerSubmittedCards.length == 1 && 'second '}
             card from your hand to fool the other players!</h5>
