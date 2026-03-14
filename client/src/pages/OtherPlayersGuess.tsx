@@ -83,7 +83,7 @@ export default function OtherPlayersGuess({
           handleSubmit={handleSubmit} />
         <JustifySafelyContainer justifyType='evenly' className="h-100 d-flex flex-column text-center p-0">
           <Container className="mt-4 mt-sm-0">
-            <h3>The storyteller submitted the descriptor</h3>
+            <h3>The storyteller submitted the clue</h3>
             <h2><b>{storyDescriptor}</b></h2>
             <h5>Guess which card is the storyteller&apos;s!</h5>
           </Container>
