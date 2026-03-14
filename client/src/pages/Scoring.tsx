@@ -52,7 +52,7 @@ export default function Scoring({
 
   const correctGuesses = Object.values(guesses).filter(cardId => cardId === storyCardId);
 
-  let topMessage = 'Nobody guessed the storyteller\'s card.';
+  let topMessage = <>Nobody guessed the storyteller\'s card.</>;
   if (correctGuesses.length > 0 && correctGuesses.length < Object.values(guesses).length) {
     const guessedPlayerNames = players.filter(p => guesses[p.playerId] === storyCardId).map(p => p.playerName);
     const playerString = guessedPlayerNames.length === 1 ?
@@ -60,11 +60,11 @@ export default function Scoring({
       :
       `${guessedPlayerNames.slice(0, -1).join(', ')} & ${guessedPlayerNames[guessedPlayerNames.length - 1]}`;
 
-    topMessage = `${playerString} guessed the storyteller's card.`;
+    topMessage = <><b>{`${playerString}`}</b>guessed the storyteller's card.</>;
   }
 
   else if (correctGuesses.length === Object.values(guesses).length) {
-    topMessage = 'Everyone guessed the storyteller\'s card.';
+    topMessage = <>Everyone guessed the storyteller\'s card.</>;
   }
 
 

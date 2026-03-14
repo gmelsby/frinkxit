@@ -37,7 +37,7 @@ export default function StoryModal({
   return (
     <Modal show={selectedCard !== null} onHide={handleCloseSelect}>
       <Modal.Header closeButton>
-        <Modal.Title>You selected this image:</Modal.Title>
+        <Modal.Title>Come up with a clue</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <GameImage card={selectedCard ? selectedCard : { id: '-1', locator: '/image-placeholder.svg' }} className="card-img" />
@@ -49,7 +49,7 @@ export default function StoryModal({
         <Modal.Footer>
           <Col xs={8} md={9}>
             <Form.Control type="text" required name="descriptor"
-              maxLength={45} placeholder="Describe the image"
+              maxLength={45} placeholder="Enter a clue"
               value={descriptor}
               onChange={e => setDescriptor(e.target.value.trimStart())}
               ref={descriptionForm} />

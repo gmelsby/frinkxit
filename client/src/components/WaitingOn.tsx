@@ -9,13 +9,13 @@ export default function WaitingOn({ waitingOn }: { waitingOn: Player[] }) {
 
   return (
     <h5>
-      Waiting on {
+      Waiting on <b>{
         // number of players is listed if it's greater than one
         waitingOn.length > 1 ?
           `${waitingOn.length} Players` :
           // player name is listed if there is just one player
           waitingOn[0].playerName
-      }
+      }</b>
     </h5>
   );
 }
