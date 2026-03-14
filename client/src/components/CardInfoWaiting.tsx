@@ -19,9 +19,9 @@ export default function CardInfoWaiting({ use, storyDescriptor, cards, waitingOn
   const phrase = `${demonstrative} ${directObject}`;
 
   const phraseMap = {
-    storyTeller: ['You submitted the descriptor', `for ${phrase}`],
-    deceive: ['For the descriptor', `you submitted ${phrase}`],
-    guess: ['For the descriptor', `you guessed ${phrase}`]
+    storyTeller: ['You submitted the clue', `for ${phrase}`],
+    deceive: ['For the clue', `you submitted ${phrase}`],
+    guess: ['For the clue', `you guessed ${phrase}`]
   };
 
   return (
@@ -33,7 +33,7 @@ export default function CardInfoWaiting({ use, storyDescriptor, cards, waitingOn
         <h2>
           <b>{storyDescriptor}</b>
         </h2>
-        <h3>
+        <h3 className="mb-2 mb-lg-5">
           {phraseMap[use][1]}
         </h3>
 
