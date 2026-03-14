@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Col, Row, Form } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import ButtonTimer from '../components/ButtonTimer';
 import Sidebar from '../components/Sidebar';
 import JustifySafelyContainer from '../components/JustifySafelyContainer';
+import { DonutScene } from '../components/Donut';
 
 
 export default function HomePage({ userId }: { userId: string }) {
@@ -61,41 +62,64 @@ export default function HomePage({ userId }: { userId: string }) {
     <>
       <Sidebar />
       <JustifySafelyContainer justifyType='evenly' className="d-flex flex-column text-center align-items-center h-100 m-auto">
-        <Row className='m-5'>
+        <Row className='mx-2 my-5 mb-1 my-lg-5 py-lg-5'>
           <h1 className='rock-salt-regular'>Frinkxit</h1>
           <h4>A Mashup of <em>The Simpsons</em> and <em>Dixit</em></h4>
 
         </Row>
-        <Row className='justify-content-center'>
+        <DonutScene />
+        <Row className='justify-content-center mx-2 my-5 mt-1 py-lg-5'>
           <Row>
             <h5>To play, create a room or join an existing room.</h5>
             <Col>
               <ButtonTimer className="my-3" onClick={handleCreateRoom}>Create Room</ButtonTimer>
             </Col>
           </Row>
-          <Row className="justify-content-center">
-            <h5 className="mt-5">Join Existing Room</h5>
-            <Form onSubmit={roomCodeSubmit}>
-              <Form.Group>
-                <Row className="justify-content-center mb-1">
-                  <Col xs="auto" className='justify-content-center align-items-center text-end px-0 mx-1'>
-                    <div className="align-self-center">
-                      <Form.Label className='my-0 self-center' htmlFor="input-code">Room Code:</Form.Label>
-                    </div>
-                  </Col>
-                  <Col xs={4} md={2} lg={1} className='align-items-left p-0 mx-1'>
-                    <Form.Control className="text-center" type="text" id='input-code' name="input-room-code"
-                      required maxLength={4} placeholder="XYZW" pattern="[A-Z]{4}"
-                      value={enteredRoomId}
-                      onChange={e => setEnteredRoomId(e.target.value.toUpperCase())} />
-                  </Col>
-                </Row>
-                <Button className="my-2" type="submit" disabled={enteredRoomId.length !== 4}>Join!</Button>
-              </Form.Group>
-            </Form>
-          </Row>
+          <JoinRoomForm {...{ enteredRoomId, setEnteredRoomId, roomCodeSubmit }} />
         </Row>
       </JustifySafelyContainer>
     </>
   );
+}
+
+
+function JoinRoomForm({ enteredRoomId, setEnteredRoomId, roomCodeSubmit }: {
+  enteredRoomId: string;
+  setEnteredRoomId: (value: string) => void;
+  roomCodeSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}) {
+
+  const isButtonDisabled = enteredRoomId.length !== 4;
+  return (
+    <Row className="justify-content-center">
+      <h5 className="mt-3 mt-lg-5">Join Existing Room</h5>
+      <form onSubmit={roomCodeSubmit}>
+        <div className="form-group">
+          <div className="d-flex justify-content-center mb-1 gap-2">
+            <div className="d-flex align-items-center">
+              <label className="my-0" htmlFor="input-code">
+                Room Code:
+              </label>
+            </div>
+            <div style={{ width: '80px' }}>
+              <input
+                className="form-control text-center"
+                type="text"
+                id="input-code"
+                name="input-room-code"
+                required
+                maxLength={4}
+                placeholder="XYZW"
+                pattern="[A-Z]{4}"
+                value={enteredRoomId}
+                onChange={(e) => setEnteredRoomId(e.target.value.toUpperCase())}
+              />
+            </div>
+          </div>
+          <Button className="my-2" type="submit" disabled={isButtonDisabled}>
+            Join!
+          </Button>
+        </div>
+      </form>
+    </Row>);
 }
