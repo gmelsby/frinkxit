@@ -25,6 +25,6 @@ COPY --from=build /usr/src/app/serverbuild ./serverbuild
 COPY --from=build /usr/src/app/client/dist ./client/dist
 ENV NODE_ENV=production
 ENV NODE_OPTIONS="--max-old-space-size=192"
-RUN npm i --omit-dev
+RUN npm i --omit=dev
 EXPOSE 3000
 CMD ["node", "serverbuild/app.js"]
