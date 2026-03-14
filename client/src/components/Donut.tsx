@@ -109,7 +109,7 @@ export function DonutScene() {
   }
 
   return (
-    <div className="z-10">
+    <div className="z-10 flex-fill w-100 my-lg-3 mb-lg-5">
       <Canvas
         camera={{
           position: cameraPosition,
@@ -119,9 +119,9 @@ export function DonutScene() {
         }}
       >
         <Suspense fallback={<></>}>
-          <ambientLight intensity={.5} />
-          <pointLight intensity={10} ref={light1} position={cameraPosition.clone().add(light1Position)} />
-          <pointLight intensity={15} ref={light2} position={cameraPosition.clone().add(light2Position)} />
+          <ambientLight color={"white"} intensity={.5} />
+          <pointLight intensity={10} color={"pink"} ref={light1} position={cameraPosition.clone().add(light1Position)} />
+          <pointLight intensity={15} color={"pink"} ref={light2} position={cameraPosition.clone().add(light2Position)} />
           <pointLight intensity={7} ref={light3} position={cameraPosition.clone().add(light3Position)} />
           <Donut animationCallback={animationCallback} />
           <OrbitControls enablePan={false} enableZoom={false}
