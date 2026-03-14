@@ -33,7 +33,7 @@ export default function CardInfoWaiting({ use, storyDescriptor, cards, waitingOn
         <h2>
           <b>{storyDescriptor}</b>
         </h2>
-        <h3 className="mb-2 mb-lg-5">
+        <h3 className="mb-5 pb-lg-5">
           {phraseMap[use][1]}
         </h3>
 
