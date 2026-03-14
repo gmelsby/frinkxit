@@ -31,7 +31,7 @@ export default function OtherPlayerModal({
     <Modal show={selectedCard !== null} onHide={handleCloseSelect}>
       <Modal.Header closeButton>
         <Modal.Title>
-          Do you want to {use === 'deceive' ? 'submit' : 'guess'} this card for the phrase <b>{storyDescriptor}</b>?
+          Do you want to {use === 'deceive' ? 'submit' : 'guess'} this card for the clue <b>{storyDescriptor}</b>?
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
