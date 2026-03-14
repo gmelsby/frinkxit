@@ -62,13 +62,13 @@ export default function HomePage({ userId }: { userId: string }) {
     <>
       <Sidebar />
       <JustifySafelyContainer justifyType='evenly' className="d-flex flex-column text-center align-items-center h-100 m-auto">
-        <Row className='m-5 mb-1'>
+        <Row className='mx-2 my-5 mb-1 my-lg-5 py-lg-5'>
           <h1 className='rock-salt-regular'>Frinkxit</h1>
           <h4>A Mashup of <em>The Simpsons</em> and <em>Dixit</em></h4>
 
         </Row>
         <DonutScene />
-        <Row className='justify-content-center'>
+        <Row className='justify-content-center mx-2 my-5 mt-1 py-lg-5'>
           <Row>
             <h5>To play, create a room or join an existing room.</h5>
             <Col>
@@ -92,7 +92,7 @@ function JoinRoomForm({ enteredRoomId, setEnteredRoomId, roomCodeSubmit }: {
   const isButtonDisabled = enteredRoomId.length !== 4;
   return (
     <Row className="justify-content-center">
-      <h5 className="mt-5">Join Existing Room</h5>
+      <h5 className="mt-3 mt-lg-5">Join Existing Room</h5>
       <form onSubmit={roomCodeSubmit}>
         <div className="form-group">
           <div className="d-flex justify-content-center mb-1 gap-2">
