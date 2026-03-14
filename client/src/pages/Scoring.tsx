@@ -52,19 +52,30 @@ export default function Scoring({
 
   const correctGuesses = Object.values(guesses).filter(cardId => cardId === storyCardId);
 
-  let topMessage = <>Nobody guessed the storyteller\'s card.</>;
+  let topMessage = <>Nobody guessed the storyteller's card.</>;
   if (correctGuesses.length > 0 && correctGuesses.length < Object.values(guesses).length) {
     const guessedPlayerNames = players.filter(p => guesses[p.playerId] === storyCardId).map(p => p.playerName);
     const playerString = guessedPlayerNames.length === 1 ?
-      guessedPlayerNames[0]
+      <b>{guessedPlayerNames[0]}</b>
       :
-      `${guessedPlayerNames.slice(0, -1).join(', ')} & ${guessedPlayerNames[guessedPlayerNames.length - 1]}`;
+      (<>
+        {guessedPlayerNames.slice(0, -1).map((n, i) =>
+          i === 0 ?
+            <b key={`${n}${i}`}>{n}</b>
+            :
+            <React.Fragment key={`${n}${i}`}>, <b>{n}</b></React.Fragment>
+        )}
+        <> & </>
+        <b>
+          {guessedPlayerNames[guessedPlayerNames.length - 1]}
+        </b>
+      </>);
 
-    topMessage = <><b>{`${playerString}`}</b>guessed the storyteller's card.</>;
+    topMessage = <>{playerString} guessed the storyteller's card.</>;
   }
 
   else if (correctGuesses.length === Object.values(guesses).length) {
-    topMessage = <>Everyone guessed the storyteller\'s card.</>;
+    topMessage = <>Everyone guessed the storyteller's card.</>;
   }
 
 
